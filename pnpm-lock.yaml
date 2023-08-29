@@ -26,11 +26,11 @@ dependencies:
 
 devDependencies:
   '@mufan/code':
-    specifier: ^0.2.16
-    version: 0.2.16
+    specifier: ^0.2.17
+    version: 0.2.17
   '@mufan/eslint-plugin':
-    specifier: ^0.1.81
-    version: 0.1.81(eslint@8.48.0)
+    specifier: ^0.1.82
+    version: 0.1.82(eslint@8.48.0)
   '@types/node':
     specifier: ^20.5.7
     version: 20.5.7
@@ -508,12 +508,12 @@ packages:
       regenerator-runtime: 0.13.11
     dev: false
 
-  /@mufan/code@0.2.16:
-    resolution: {integrity: sha512-tkGIrXGiSgpBO5L30c+XQqwXHWTinTQXqAeynN4Qw8ZKkzYNcKBuDxmdnUdiSL69UrSsHdlpchKJqXfaN2EDww==}
+  /@mufan/code@0.2.17:
+    resolution: {integrity: sha512-d3IYXgT+pZLW/3COaC0JKvaztT/rYeF2vHFkRF37on0jnDvBN5ev2In2gZ1JEBKcR1aFNt7ds8gX8whJCQIb9g==}
     dev: true
 
-  /@mufan/eslint-plugin@0.1.81(eslint@8.48.0):
-    resolution: {integrity: sha512-QA+7HcceLg6p9urj6HCfv7ib+OIyST6Rxi627wyhYqjcpw3hiLVZ0llm4ENy8h/cemeyCIbk5P0fbY2h46Lv0Q==}
+  /@mufan/eslint-plugin@0.1.82(eslint@8.48.0):
+    resolution: {integrity: sha512-JQyDFpn1po869A7zSm+9uptrns9tmY93LZWJXtWjjjvrspfWignwnTm6rCijR4LyI7NOHN+jEqEYTWzU4exTaw==}
     peerDependencies:
       eslint: ^8
     dependencies:

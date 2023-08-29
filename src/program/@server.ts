@@ -57,7 +57,9 @@ export function setupServer({
 
         active = message.name;
 
-        void action(active).catch(console.error);
+        console.info('activated:', active);
+
+        void Promise.resolve(action(active)).catch(console.error);
 
         break;
     }

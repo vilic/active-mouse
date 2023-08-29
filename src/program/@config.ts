@@ -12,7 +12,7 @@ export const ServerConfig = x.object({
   name: x.string.optional(),
   host: x.string.optional(),
   port: x.number.optional(),
-  action: x.function([x.string], x.Promise(x.void)),
+  action: x.function([x.string], x.union([x.Promise(x.void), x.void])),
 });
 
 export type ServerConfig = x.TypeOf<typeof ServerConfig>;
