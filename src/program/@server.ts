@@ -2,7 +2,11 @@ import type {WebSocket} from 'ws';
 import {WebSocketServer} from 'ws';
 
 import type {ServerConfig} from './@config';
-import {LISTEN_HOST_DEFAULT, PORT_DEFAULT} from './@constants';
+import {
+  ACTIVATE_DEBOUNCE,
+  LISTEN_HOST_DEFAULT,
+  PORT_DEFAULT,
+} from './@constants';
 import type {ClientMessage, ServerMessage} from './@data';
 import {requestMouseMove} from './@mouse';
 
@@ -13,6 +17,7 @@ export function setupServer({
   action,
 }: ServerConfig): void {
   let active: string | undefined;
+  let activatedAt = 0;
 
   const server = new WebSocketServer({host, port}).on(
     'connection',
@@ -45,23 +50,33 @@ export function setupServer({
 
   function handle(message: ClientMessage): void {
     switch (message.type) {
-      case 'activate':
-        broadcast({
-          type: 'activate',
-          name: message.name,
-        });
+      case 'activate': {
+        const now = Date.now();
 
-        if (message.name === active) {
+        const {name} = message;
+
+        if (now - activatedAt < ACTIVATE_DEBOUNCE) {
           break;
         }
 
-        active = message.name;
+        broadcast({
+          type: 'activate',
+          name,
+        });
+
+        if (name === active) {
+          break;
+        }
+
+        active = name;
+        activatedAt = now;
 
         console.info('activated:', active);
 
         void Promise.resolve(action(active)).catch(console.error);
 
         break;
+      }
     }
   }
 
