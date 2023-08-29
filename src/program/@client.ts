@@ -60,6 +60,10 @@ export function setupClient({
   }
 
   function send(message: ClientMessage): void {
+    if (socket.readyState !== WebSocket.OPEN) {
+      return;
+    }
+
     socket.send(JSON.stringify(message));
   }
 }
