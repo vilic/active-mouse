@@ -1,0 +1,16 @@
+{
+  "$schema": "boilerplate.schema.json",
+  "boilerplate": "@mufan/code-boilerplates/typescript",
+  "options": {
+    "name": "active-mouse",
+    "license": "MIT",
+    "author": "Active Mouse",
+    "repository": "https://github.com/vilic/active-mouse.git",
+    "packageManager": "pnpm",
+    "projects": [
+      {
+        "name": "program"
+      }
+    ]
+  }
+}
