@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import main, {BACKGROUND} from 'main-function';
 
 import {setupClient} from './@client';

@@ -4,6 +4,7 @@
   "repository": "https://github.com/vilic/active-mouse.git",
   "license": "MIT",
   "author": "Active Mouse",
+  "bin": "./bld/program/main.js",
   "scripts": {
     "3": "pnpm install && pnpm dedupe && pnpm install",
     "build": "rimraf ./bld && tsc --build",
