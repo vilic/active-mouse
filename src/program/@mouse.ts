@@ -1,5 +1,5 @@
-import type {Point} from '@nut-tree/nut-js';
-import {mouse} from '@nut-tree/nut-js';
+import type {Point} from '@nut-tree/libnut';
+import {getMousePos} from '@nut-tree/libnut';
 
 import {MOUSE_POSITION_INTERVAL} from './@constants';
 
@@ -11,21 +11,21 @@ export function requestMouseMove(callback: MouseMoveCallback): void {
   request();
 
   function request(): void {
-    void mouse.getPosition().then(current => {
-      setTimeout(request, MOUSE_POSITION_INTERVAL);
+    setTimeout(request, MOUSE_POSITION_INTERVAL);
 
-      if (!previous) {
-        previous = current;
-        return;
-      }
+    const current = getMousePos();
 
-      if (current.x === previous.x && current.y === previous.y) {
-        return;
-      }
-
+    if (!previous) {
       previous = current;
+      return;
+    }
 
-      callback();
-    });
+    if (current.x === previous.x && current.y === previous.y) {
+      return;
+    }
+
+    previous = current;
+
+    callback();
   }
 }
