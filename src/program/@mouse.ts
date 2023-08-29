@@ -8,22 +8,24 @@ export type MouseMoveCallback = () => void;
 export function requestMouseMove(callback: MouseMoveCallback): void {
   let previous: Point | undefined;
 
-  setInterval(
-    () =>
-      void mouse.getPosition().then(current => {
-        if (!previous) {
-          previous = current;
-          return;
-        }
+  request();
 
-        if (current.x === previous.x && current.y === previous.y) {
-          return;
-        }
+  function request(): void {
+    void mouse.getPosition().then(current => {
+      setTimeout(request, MOUSE_POSITION_INTERVAL);
 
+      if (!previous) {
         previous = current;
+        return;
+      }
 
-        callback();
-      }),
-    MOUSE_POSITION_INTERVAL,
-  );
+      if (current.x === previous.x && current.y === previous.y) {
+        return;
+      }
+
+      previous = current;
+
+      callback();
+    });
+  }
 }

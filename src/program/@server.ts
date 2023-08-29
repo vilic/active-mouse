@@ -30,7 +30,7 @@ export function setupServer({
     },
   );
 
-  if (name) {
+  if (name !== undefined) {
     requestMouseMove(() => {
       if (name === active) {
         return;

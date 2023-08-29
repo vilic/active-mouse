@@ -33,8 +33,8 @@ export function setupClient({
       ),
     )
     .on('error', error => {
-      if ('code' in error && error.code === 'ECONNREFUSED') {
-        console.error('connection refused:', url);
+      if ('code' in error) {
+        console.error(`connection error (${error.code}):`, url);
       } else {
         console.error(error);
       }
