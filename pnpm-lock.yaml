@@ -5,8 +5,14 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@nut-tree/libnut':
-    specifier: ^2.5.2
+  '@nut-tree/libnut-darwin':
+    specifier: 2.5.2
+    version: 2.5.2
+  '@nut-tree/libnut-linux':
+    specifier: 2.5.2
+    version: 2.5.2
+  '@nut-tree/libnut-win32':
+    specifier: 2.5.2
     version: 2.5.2
   '@types/ws':
     specifier: ^8.5.5
@@ -211,15 +217,6 @@ packages:
       bindings: 1.5.0
     optionalDependencies:
       '@nut-tree/node-mac-permissions': 2.2.1
-    dev: false
-
-  /@nut-tree/libnut@2.5.2:
-    resolution: {integrity: sha512-IwlGgalGQjjCrbPq52HTLtsR6MRsGJ6c4GhgHmgwJPD/yBVCzsU5EA2rwDgjKSgK+jiLOpykySDZQ+owhyd1zw==}
-    engines: {node: '>=10.15.3'}
-    dependencies:
-      '@nut-tree/libnut-darwin': 2.5.2
-      '@nut-tree/libnut-linux': 2.5.2
-      '@nut-tree/libnut-win32': 2.5.2
     dev: false
 
   /@nut-tree/node-mac-permissions@2.2.1:
