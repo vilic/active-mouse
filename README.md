@@ -9,9 +9,12 @@
 ```js
 import {spawn} from 'child_process';
 
+const CONTROL_MY_MONITOR_PATH =
+  'C:\\Utilities\\controlmymonitor\\ControlMyMonitor.exe';
+
 // Try out the configs with ControlMyMonitor.exe first.
 
-const MONITOR_ID = ''; // Could be serial number
+const MONITOR = ''; // Could be serial number
 
 const MONITOR_INPUT_DICT = {
   'vane-station': '15', // DisplayPort in my case
@@ -22,9 +25,9 @@ export default {
   type: 'server',
   name: 'vane-station',
   action(name) {
-    spawn('C:\\Utilities\\controlmymonitor\\ControlMyMonitor.exe', [
+    spawn(CONTROL_MY_MONITOR_PATH, [
       '/SetValue',
-      MONITOR_ID,
+      MONITOR,
       '60',
       MONITOR_INPUT_DICT[name],
     ]);
