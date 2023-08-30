@@ -9,11 +9,13 @@
 ```js
 import {spawn} from 'child_process';
 
-const MONITOR_ID = '\\\\.\\DISPLAY10\\Monitor0';
+// Try out the configs with ControlMyMonitor.exe first.
+
+const MONITOR_ID = ''; // Could be serial number
 
 const MONITOR_INPUT_DICT = {
-  'vane-station': '15',
-  'vane-mba': '27',
+  'vane-station': '15', // DisplayPort in my case
+  'vane-mba': '27', // Type-C in my case
 };
 
 export default {
