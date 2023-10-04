@@ -25,6 +25,7 @@ export function setupClient({
   const socket = new WebSocket(url)
     .on('open', () => {
       console.info('connected:', url);
+      socket.ping();
     })
     .on('pong', () => {
       setTimeout(() => {
@@ -58,8 +59,6 @@ export function setupClient({
         console.error(error);
       }
     });
-
-  socket.ping();
 
   requestMouseMove(() => {
     if (activated) {
