@@ -1,7 +1,12 @@
 import WebSocket from 'ws';
 
 import type {ClientConfig} from './@config';
-import {PORT_DEFAULT, RECONNECT_INTERVAL} from './@constants';
+import {
+  PING_PONG_INTERVAL,
+  PING_PONG_TIMEOUT,
+  PORT_DEFAULT,
+  RECONNECT_INTERVAL,
+} from './@constants';
 import type {ClientMessage, ServerMessage} from './@data';
 import {requestMouseMove} from './@mouse';
 
@@ -15,9 +20,23 @@ export function setupClient({
 
   const url = `ws://${host}:${port}`;
 
+  let heartbeatTimer: NodeJS.Timeout | undefined;
+
   const socket = new WebSocket(url)
     .on('open', () => {
       console.info('connected:', url);
+    })
+    .on('pong', () => {
+      setTimeout(() => {
+        clearTimeout(heartbeatTimer);
+
+        socket.ping();
+
+        heartbeatTimer = setTimeout(() => {
+          console.info('server timed out:', url);
+          socket.terminate();
+        }, PING_PONG_TIMEOUT);
+      }, PING_PONG_INTERVAL);
     })
     .on('message', buffer => handle(JSON.parse(buffer.toString())))
     .on('close', () =>
@@ -39,6 +58,8 @@ export function setupClient({
         console.error(error);
       }
     });
+
+  socket.ping();
 
   requestMouseMove(() => {
     if (activated) {

@@ -5,6 +5,8 @@ import type {ServerConfig} from './@config';
 import {
   ACTIVATE_DEBOUNCE,
   LISTEN_HOST_DEFAULT,
+  PING_PONG_INTERVAL,
+  PING_PONG_TIMEOUT,
   PORT_DEFAULT,
 } from './@constants';
 import type {ClientMessage, ServerMessage} from './@data';
@@ -24,7 +26,24 @@ export function setupServer({
     (socket, request) => {
       console.info('client connected:', request.socket.remoteAddress);
 
-      socket.on('message', buffer => handle(JSON.parse(buffer.toString())));
+      socket.ping();
+
+      let heartbeatTimer: NodeJS.Timeout | undefined;
+
+      socket
+        .on('pong', () => {
+          setTimeout(() => {
+            clearTimeout(heartbeatTimer);
+
+            socket.ping();
+
+            heartbeatTimer = setTimeout(() => {
+              console.info('client timed out:', request.socket.remoteAddress);
+              socket.terminate();
+            }, PING_PONG_TIMEOUT);
+          }, PING_PONG_INTERVAL);
+        })
+        .on('message', buffer => handle(JSON.parse(buffer.toString())));
 
       if (active !== undefined) {
         send(socket, {

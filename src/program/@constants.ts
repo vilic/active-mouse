@@ -9,3 +9,7 @@ export const RECONNECT_INTERVAL = 1000;
 export const MOUSE_POSITION_INTERVAL = 100;
 
 export const ACTIVATE_DEBOUNCE = 1000;
+
+export const PING_PONG_INTERVAL = 1000;
+
+export const PING_PONG_TIMEOUT = 5000;
