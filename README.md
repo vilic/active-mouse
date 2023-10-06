@@ -2,6 +2,12 @@
 
 ## Usage
 
+```sh
+active-mouse [config]
+active-mouse [config] --startup
+active-mouse [config] --disable-startup
+```
+
 ### Server
 
 **.config.mjs**

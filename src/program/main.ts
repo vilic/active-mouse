@@ -8,6 +8,22 @@ import {getConfig} from './@config';
 import {setupServer} from './@server';
 
 main(async ([configFileName, ...args]) => {
+  if (!StartupRun.daemonSpawned) {
+    const run = await StartupRun.create('active-mouse');
+
+    if (args.includes('--startup')) {
+      await run.enable();
+
+      run.start();
+
+      return;
+    } else if (args.includes('--disable-startup')) {
+      await run.disable();
+
+      return;
+    }
+  }
+
   const config = await getConfig(configFileName);
 
   switch (config.type) {
@@ -17,14 +33,6 @@ main(async ([configFileName, ...args]) => {
     case 'client':
       setupClient(config);
       break;
-  }
-
-  const run = StartupRun.create('active-mouse');
-
-  if (args.includes('--disable-auto-start')) {
-    await run.disable();
-  } else if (args.includes('--auto-start')) {
-    await run.enable();
   }
 
   await BACKGROUND;
