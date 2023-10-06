@@ -8,21 +8,12 @@ import {getConfig} from './@config';
 import {setupServer} from './@server';
 
 main(async ([configFileName, ...args]) => {
-  if (!StartupRun.daemonSpawned) {
-    const run = await StartupRun.create('active-mouse');
+  const run = StartupRun.create('active-mouse');
 
-    if (args.includes('--startup')) {
-      await run.enable();
-
-      run.start();
-
-      return;
-    } else if (args.includes('--disable-startup')) {
-      await run.disable();
-
-      return;
-    }
-  }
+  await run.setup({
+    enable: args.includes('--startup'),
+    disable: args.includes('--disable-startup'),
+  });
 
   const config = await getConfig(configFileName);
 
