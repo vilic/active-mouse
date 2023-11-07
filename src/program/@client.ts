@@ -1,14 +1,14 @@
 import WebSocket from 'ws';
 
-import type {ClientConfig} from './@config';
+import type {ClientConfig} from './@config.js';
 import {
   PING_PONG_INTERVAL,
   PING_PONG_TIMEOUT,
   PORT_DEFAULT,
   RECONNECT_INTERVAL,
-} from './@constants';
-import type {ClientMessage, ServerMessage} from './@data';
-import {requestMouseMove} from './@mouse';
+} from './@constants.js';
+import type {ClientMessage, ServerMessage} from './@data.js';
+import {requestMouseMove} from './@mouse.js';
 
 export function setupClient({
   type,

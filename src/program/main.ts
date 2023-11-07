@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import main, {BACKGROUND} from 'main-function';
+import {BACKGROUND, main} from 'main-function';
 import {StartupRun} from 'startup-run';
 
-import {setupClient} from './@client';
-import {getConfig} from './@config';
-import {setupServer} from './@server';
+import {setupClient} from './@client.js';
+import {getConfig} from './@config.js';
+import {setupServer} from './@server.js';
 
 main(async ([configFileName, ...args]) => {
   const run = StartupRun.create('active-mouse');

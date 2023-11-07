@@ -1,6 +1,6 @@
-import {MOUSE_POSITION_INTERVAL} from './@constants';
-import type {Point} from './@libnut';
-import {libnut} from './@libnut';
+import {MOUSE_POSITION_INTERVAL} from './@constants.js';
+import type {Point} from './@libnut.js';
+import {libnut} from './@libnut.js';
 
 export type MouseMoveCallback = () => void;
 

@@ -1,9 +1,9 @@
-export interface ClientMessage {
+export type ClientMessage = {
   type: 'activate';
   name: string;
-}
+};
 
-export interface ServerMessage {
+export type ServerMessage = {
   type: 'activate';
   name: string;
-}
+};

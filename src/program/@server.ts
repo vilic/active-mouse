@@ -1,16 +1,16 @@
 import type {WebSocket} from 'ws';
 import {WebSocketServer} from 'ws';
 
-import type {ServerConfig} from './@config';
+import type {ServerConfig} from './@config.js';
 import {
   ACTIVATE_DEBOUNCE,
   LISTEN_HOST_DEFAULT,
   PING_PONG_INTERVAL,
   PING_PONG_TIMEOUT,
   PORT_DEFAULT,
-} from './@constants';
-import type {ClientMessage, ServerMessage} from './@data';
-import {requestMouseMove} from './@mouse';
+} from './@constants.js';
+import type {ClientMessage, ServerMessage} from './@data.js';
+import {requestMouseMove} from './@mouse.js';
 
 export function setupServer({
   name,
