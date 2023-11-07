@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.1.6
     version: 0.1.6
   startup-run:
-    specifier: ^0.0.5
-    version: 0.0.5
+    specifier: ^0.0.7
+    version: 0.0.7
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
@@ -2096,8 +2096,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /startup-run@0.0.5:
-    resolution: {integrity: sha512-4P7vw1cN8wxsHM3k8/fqDq215fll75UdoZn0M6a5BAM2M+xvZEBUrsw5t6bcrRJZim5yCVWGsmShBPDraXR1tg==}
+  /startup-run@0.0.7:
+    resolution: {integrity: sha512-I5TGOThM+6EvJc/WmytaCFZA4fmZALy1tsvVzg8jCM66grkPB1ldRAXOe+yL3HKUbbxkKG29jR7rTRzc5gy24w==}
     dependencies:
       '@types/fs-extra': 11.0.2
       '@types/winreg': 1.2.33
