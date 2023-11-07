@@ -4,10 +4,11 @@
   "repository": "https://github.com/vilic/active-mouse.git",
   "license": "MIT",
   "author": "Active Mouse",
+  "type": "module",
   "scripts": {
     "3": "pnpm install && pnpm dedupe && pnpm install",
     "build": "rimraf ./bld && tsc --build",
-    "lint": "eslint --no-error-on-unmatched-pattern . && run-in-every eslint-project --parallel --echo -- eslint --no-error-on-unmatched-pattern .",
+    "lint": "eslint --no-error-on-unmatched-pattern --report-unused-disable-directives . && run-in-every eslint-project --parallel --echo -- eslint --no-error-on-unmatched-pattern --report-unused-disable-directives .",
     "lint-prettier": "prettier --check .",
     "test": "pnpm lint-prettier && pnpm build && pnpm lint"
   },
@@ -15,11 +16,10 @@
     "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@mufan/code": "^0.2.16",
-    "@mufan/eslint-plugin": "^0.1.81",
-    "eslint": "^8.48.0",
+    "@mufan/eslint-plugin": "^0.2.14",
+    "eslint": "^8.53.0",
     "prettier": "^3.0.3",
-    "rimraf": "^5.0.1",
+    "rimraf": "^5.0.5",
     "run-in-every": "^0.2.0",
     "typescript": "^5.2.2"
   }
