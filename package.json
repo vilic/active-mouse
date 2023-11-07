@@ -19,10 +19,10 @@
     "@nut-tree/libnut-win32": "2.5.2",
     "@types/ws": "^8.5.5",
     "main-function": "^0.1.6",
-    "startup-run": "^0.0.7",
+    "startup-run": "^0.0.8",
     "tslib": "^2.6.2",
     "ws": "^8.13.0",
-    "x-value": "^0.1.15"
+    "x-value": "^0.2.1"
   },
   "devDependencies": {
     "@mufan/eslint-plugin": "^0.2.14",

@@ -1,4 +1,5 @@
 import {existsSync} from 'fs';
+import {createRequire} from 'module';
 import {resolve} from 'path';
 import {pathToFileURL} from 'url';
 
@@ -6,6 +7,8 @@ import {ProgramError} from 'main-function';
 import * as x from 'x-value';
 
 import {CONFIG_FILE_NAME_DEFAULT} from './@constants.js';
+
+const require = createRequire(import.meta.url);
 
 export const ServerConfig = x.object({
   type: x.literal('server'),

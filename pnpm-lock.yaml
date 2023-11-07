@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.1.6
     version: 0.1.6
   startup-run:
-    specifier: ^0.0.7
-    version: 0.0.7
+    specifier: ^0.0.8
+    version: 0.0.8
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
@@ -30,8 +30,8 @@ dependencies:
     specifier: ^8.13.0
     version: 8.13.0
   x-value:
-    specifier: ^0.1.15
-    version: 0.1.15
+    specifier: ^0.2.1
+    version: 0.2.1
 
 devDependencies:
   '@mufan/eslint-plugin':
@@ -467,6 +467,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       color-convert: 2.0.1
+    dev: true
 
   /ansi-styles@6.2.1:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
@@ -621,6 +622,12 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: true
+
+  /chalk@5.3.0:
+    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+    dev: false
 
   /clime@0.5.14:
     resolution: {integrity: sha512-+q7UDQ+EcruHtZRtd2QVs+t/jf9MpuOyhHbuHcYWvjX8jdly6AU7z3/7MiI0Kj0hzueIEX9JM7vPnkzBrG082Q==}
@@ -645,6 +652,7 @@ packages:
     engines: {node: '>=7.0.0'}
     dependencies:
       color-name: 1.1.4
+    dev: true
 
   /color-name@1.1.3:
     resolution: {integrity: sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==}
@@ -652,6 +660,7 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    dev: true
 
   /command-join@3.0.0:
     resolution: {integrity: sha512-areSrJRrc9cbaA+Hxhs+QP4y+lkWXClAyOmxd79NvGEqUw1uLLaMKa2Tmuc1AkaER9XzmGTzpFWzwucYottMKw==}
@@ -1309,6 +1318,7 @@ packages:
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
+    dev: true
 
   /has-property-descriptors@1.0.0:
     resolution: {integrity: sha512-62DVLZGoiEBDHQyqG4w9xCuZ7eJEwNmJRWw2VY84Oedb7WFcA27fiEVe8oUQx9hAUJ4ekurquucTGwsyO1XGdQ==}
@@ -2096,12 +2106,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /startup-run@0.0.7:
-    resolution: {integrity: sha512-I5TGOThM+6EvJc/WmytaCFZA4fmZALy1tsvVzg8jCM66grkPB1ldRAXOe+yL3HKUbbxkKG29jR7rTRzc5gy24w==}
+  /startup-run@0.0.8:
+    resolution: {integrity: sha512-BpuF8dXLOnQvjgZCD9oo97qC9lAwuxMDKt7g5sLmfgXKnKV5HrwedOQ9ggBhWiKxMA8C8qGvB47nsWE06WrIDg==}
     dependencies:
       '@types/fs-extra': 11.0.2
       '@types/winreg': 1.2.33
-      chalk: 4.1.2
+      chalk: 5.3.0
       command-join: 3.0.0
       fs-extra: 11.1.1
       main-function: 0.1.7
@@ -2218,6 +2228,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       has-flag: 4.0.0
+    dev: true
 
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
@@ -2457,19 +2468,19 @@ packages:
         optional: true
     dev: false
 
-  /x-value@0.1.15:
-    resolution: {integrity: sha512-p/X28FtQ+3Qpg2bXXpmc7I3AEeWgwCUXp1LspHa2M4pWSP0/SL+pfH8I0VbCb4rIb/40O7E34owKhow5e0S0Bw==}
-    dependencies:
-      lodash.isequal: 4.5.0
-      tslib: 2.6.2
-    dev: false
-
   /x-value@0.1.16:
     resolution: {integrity: sha512-Nza2hOUBMyprjK+MbiIq0xMtneYEcIeivOg9XodWXOfpSow6C2EKlTdLNFiWetPsoqssPHksapVP7aBEjFJ5VA==}
     dependencies:
       lodash.isequal: 4.5.0
       tslib: 2.6.2
     dev: true
+
+  /x-value@0.2.1:
+    resolution: {integrity: sha512-2dEICNgilCLuc2GLG55Apto2ygY8RyPUe1Fapm+g2mnTZEbtu15PKa4rHC7P90RMfeIVZxTD2zHuawt4SKUMyw==}
+    dependencies:
+      lodash.isequal: 4.5.0
+      tslib: 2.6.2
+    dev: false
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
