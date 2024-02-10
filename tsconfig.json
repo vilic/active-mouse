@@ -1,8 +1,8 @@
 {
   "references": [
     {
-      "path": "src/program"
-    }
+      "path": "src/program",
+    },
   ],
-  "files": []
+  "files": [],
 }
