@@ -11,7 +11,7 @@
     "build": "rimraf ./bld && tsc --build",
     "lint": "eslint --no-error-on-unmatched-pattern --report-unused-disable-directives . && run-in-every eslint-project --parallel --echo -- eslint --no-error-on-unmatched-pattern --report-unused-disable-directives .",
     "lint-prettier": "prettier --check .",
-    "test": "pnpm lint-prettier && pnpm build && pnpm lint"
+    "test": "npm run lint-prettier && npm run build && npm run lint"
   },
   "dependencies": {
     "@nut-tree/libnut-darwin": "2.6.0",
@@ -25,12 +25,12 @@
     "x-value": "^0.2.1"
   },
   "devDependencies": {
-    "@mufan/eslint-plugin": "^0.2.14",
+    "@mufan/eslint-plugin": "^0.2.18",
     "@types/node": "^20.5.7",
-    "eslint": "^8.53.0",
-    "prettier": "^3.0.3",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "run-in-every": "^0.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }
