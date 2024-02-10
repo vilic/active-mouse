@@ -8,3 +8,4 @@ bld/
 # Configs
 .config.*
 .*-config.*
+*.log
