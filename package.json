@@ -19,7 +19,7 @@
     "@nut-tree/libnut-win32": "2.6.0",
     "@types/ws": "^8.5.5",
     "main-function": "^0.1.6",
-    "startup-run": "^0.0.9",
+    "startup-run": "^0.0.10",
     "tslib": "^2.6.2",
     "ws": "^8.13.0",
     "x-value": "^0.2.1"
