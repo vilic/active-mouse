@@ -11,54 +11,17 @@ import type {ClientMessage, ServerMessage} from './@data.js';
 import {requestMouseMove} from './@mouse.js';
 
 export function setupClient({
-  type,
   name,
   host,
   port = PORT_DEFAULT,
 }: ClientConfig): void {
+  let activeWS: WebSocket | undefined;
+
   let activated = false;
 
   const url = `ws://${host}:${port}`;
 
-  let heartbeatTimer: NodeJS.Timeout | undefined;
-
-  const socket = new WebSocket(url)
-    .on('open', () => {
-      console.info('connected:', url);
-      socket.ping();
-    })
-    .on('pong', () => {
-      setTimeout(() => {
-        clearTimeout(heartbeatTimer);
-
-        socket.ping();
-
-        heartbeatTimer = setTimeout(() => {
-          console.info('server timed out:', url);
-          socket.terminate();
-        }, PING_PONG_TIMEOUT);
-      }, PING_PONG_INTERVAL);
-    })
-    .on('message', buffer => handle(JSON.parse(buffer.toString())))
-    .on('close', () =>
-      setTimeout(
-        () =>
-          setupClient({
-            type,
-            name,
-            host,
-            port,
-          }),
-        RECONNECT_INTERVAL,
-      ),
-    )
-    .on('error', error => {
-      if ('code' in error) {
-        console.error(`connection error (${error.code}):`, url);
-      } else {
-        console.error(error);
-      }
-    });
+  connect();
 
   requestMouseMove(() => {
     if (activated) {
@@ -71,19 +34,59 @@ export function setupClient({
     });
   });
 
-  function handle(message: ServerMessage): void {
-    switch (message.type) {
-      case 'activate':
-        activated = message.name === name;
-        break;
-    }
+  function connect(): void {
+    let heartbeatTimer: NodeJS.Timeout | undefined;
+
+    const ws = new WebSocket(url)
+      .on('open', () => {
+        activeWS = ws;
+
+        console.info('connected:', url);
+
+        ws.ping();
+      })
+      .on('pong', () => {
+        setTimeout(() => {
+          clearTimeout(heartbeatTimer);
+
+          ws.ping();
+
+          heartbeatTimer = setTimeout(() => {
+            console.info('server timed out:', url);
+            ws.terminate();
+          }, PING_PONG_TIMEOUT);
+        }, PING_PONG_INTERVAL);
+      })
+      .on('message', buffer => {
+        const message = JSON.parse(buffer.toString()) as ServerMessage;
+
+        switch (message.type) {
+          case 'activate':
+            activated = message.name === name;
+            break;
+        }
+      })
+      .on('close', () => {
+        console.info('disconnected.');
+
+        activeWS = undefined;
+
+        setTimeout(() => connect(), RECONNECT_INTERVAL);
+      })
+      .on('error', error => {
+        if ('code' in error) {
+          console.error(`connection error (${error.code}):`, url);
+        } else {
+          console.error(error);
+        }
+      });
   }
 
   function send(message: ClientMessage): void {
-    if (socket.readyState !== WebSocket.OPEN) {
+    if (!activeWS || activeWS.readyState !== WebSocket.OPEN) {
       return;
     }
 
-    socket.send(JSON.stringify(message));
+    activeWS.send(JSON.stringify(message));
   }
 }
