@@ -1,5 +1,6 @@
+import RobotJS from 'robotjs';
+
 import {MOUSE_POSITION_INTERVAL} from './@constants.js';
-import {getMousePos} from 'robotjs'
 
 export type MouseMoveCallback = () => void;
 
@@ -11,7 +12,7 @@ export function requestMouseMove(callback: MouseMoveCallback): void {
   function request(): void {
     setTimeout(request, MOUSE_POSITION_INTERVAL);
 
-    const current = getMousePos();
+    const current = RobotJS.getMousePos();
 
     if (!previous) {
       previous = current;
