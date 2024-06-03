@@ -1,18 +1,17 @@
 import {MOUSE_POSITION_INTERVAL} from './@constants.js';
-import type {Point} from './@libnut.js';
-import {libnut} from './@libnut.js';
+import {getMousePos} from 'robotjs'
 
 export type MouseMoveCallback = () => void;
 
 export function requestMouseMove(callback: MouseMoveCallback): void {
-  let previous: Point | undefined;
+  let previous: {x: number; y: number} | undefined;
 
   request();
 
   function request(): void {
     setTimeout(request, MOUSE_POSITION_INTERVAL);
 
-    const current = libnut.getMousePos();
+    const current = getMousePos();
 
     if (!previous) {
       previous = current;

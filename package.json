@@ -14,11 +14,9 @@
     "test": "npm run lint-prettier && npm run build && npm run lint"
   },
   "dependencies": {
-    "@nut-tree/libnut-darwin": "2.6.0",
-    "@nut-tree/libnut-linux": "2.6.0",
-    "@nut-tree/libnut-win32": "2.6.0",
     "@types/ws": "^8.5.5",
     "main-function": "^0.1.6",
+    "robotjs": "^0.6.0",
     "startup-run": "^0.0.10",
     "tslib": "^2.6.2",
     "ws": "^8.13.0",
